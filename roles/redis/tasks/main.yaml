@@ -1,0 +1,29 @@
+#dnf module disable redis -y
+#dnf module enable redis:7 -y
+#dnf install redis -y
+
+#sed -i -e 's/127.0.0.1/0.0.0.0/' -e '/protected-mode/ c protected-mode no' etc/redis/redis.con/f
+
+#systemctl enable redis
+#systemctl start redis
+
+
+- name: enable redis 7
+  ansible.builtin.shell: dnf module disable redis -y ; dnf module enable redis:7 -y
+
+- name: install redis
+  ansible.builtin.dnf:
+    name: redis -y
+    state: latest
+  
+- name: update redis config listen address
+  ansible.builtin.replace:
+    path: etc/redis/redis.con/f
+    regexp: 'protected-mode yes'
+    replace: 'protected-mode no'
+
+- name: Start redis service
+  ansible.builtin.systemd_service:
+    state: started
+    name: redis
+    enabled: true
