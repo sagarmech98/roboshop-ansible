@@ -13,7 +13,7 @@
 
 - name: install redis
   ansible.builtin.dnf:
-    name: redis -y
+    name: redis
     state: latest
   
 - name: update redis config listen address
