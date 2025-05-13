@@ -12,7 +12,7 @@
 
 - name: install Mongodb
   ansible.builtin.dnf:
-    name: mongodb-org -y
+    name: mongodb-org 
     state: latest
 
 - name: update monodb listen address
