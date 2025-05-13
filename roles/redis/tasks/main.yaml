@@ -15,8 +15,14 @@
   ansible.builtin.dnf:
     name: redis
     state: latest
-  
-- name: update redis config listen address
+
+- name: update redis listen address
+  ansible.builtin.replace:
+    path: /etc/redis/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: update redis config protected mode
   ansible.builtin.replace:
     path: /etc/redis/redis.conf
     regexp: 'protected-mode yes'
