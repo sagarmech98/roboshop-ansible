@@ -1,0 +1,21 @@
+# component_name=user
+# source common.sh
+
+
+
+# nodejs
+
+
+# systemd_setup
+
+
+- name: Run Nodejs
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: nodejs
+
+ 
+- name: run systems_service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd_setup
