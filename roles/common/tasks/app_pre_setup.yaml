@@ -23,5 +23,5 @@
 
   - name: download and extract app content
     ansible.builtin.unarchive:
-      src: https://roboshop-artifacts.s3.amazonaws.com/{{ app_name }}-v3.zi
+      src: https://roboshop-artifacts.s3.amazonaws.com/{{ app_name }}-v3.zip
       dest: /app
