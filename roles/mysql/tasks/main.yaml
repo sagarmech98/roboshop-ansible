@@ -1,34 +1,13 @@
-# if [ -z "${MYSQL_ROOT_PASSWORD}" -a -z "$1" ]; then
-#   echo Input password is missing
-#   exit
-# fi
-
-# if [ -n "${MYSQL_ROOT_PASSWORD}" ]; then
-#   PASSWORD=$MYSQL_ROOT_PASSWORD
-# fi
-
-# if [ -n "$1" ];then
-#   PASSWORD=$1
-# fi
-
-# dnf install mysql-server -y
-# systemctl enable mysqld
-# systemctl start mysqld
-
-# mysql_secure_installation --set-root-pass $PASSWORD
-
-
-
-- name: Install MQ sql server
+- name: Install MySQL Server
   ansible.builtin.dnf:
     name: mysql-server
     state: latest
 
-- name: Start mysqld
+- name: Start MySQL
   ansible.builtin.systemd_service:
-    state: started
     name: mysqld
-    enabled: true
+    state: started
+    enabled: yes
 
-- name: Get mysql root password
-  ansible.builtin.shell: mysql_secure_installation --set-root-pass $Roboshop@1
+- name: Setup MySQL Root Password
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1

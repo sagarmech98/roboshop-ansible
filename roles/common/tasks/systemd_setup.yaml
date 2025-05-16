@@ -1,18 +1,10 @@
-# cp ${pwd}/${component_name}.service /etc/systemd/system/${component_name}.service
-#   systemctl daemon-reload
-#   systemctl enable ${component_name}
-#   systemctl start ${component_name}
-
-
-
-- name: copy systemd service file
+- name: Copy service file
   ansible.builtin.copy:
     src: "{{ app_name }}.service"
     dest: /etc/systemd/system/{{ app_name }}.service
 
-
-- name: start service
-  ansible.builtin.systemd:
+- name: Start Service
+  ansible.builtin.systemd_service:
     name: "{{ app_name }}"
     state: restarted
     enabled: yes
