@@ -1,6 +1,6 @@
 default:
 	git pull
-	ansible-playbook -i $(app_name)-dev.vidyapractice.shop, -e ansible_user=testing -e ansible_password=Password@1234 -e role_name=$(app_name) roboshop.yml
+	ansible-playbook -i $(app_name)-dev.vidyapractice.shop, -e ansible_user=testing -e ansible_password=Password@1234 -e role_name=$(app_name) roboshop.yaml
 
 # all:
 # 	git pull
