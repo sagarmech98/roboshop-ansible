@@ -28,9 +28,9 @@
     state: latest
 
 - name: Load Master data
-  ansible.builtin.shell: mongosh --host mongodb.vidyapractice.shop </app/db/master-data.js
+  ansible.builtin.shell: mongosh --host mongodb-dev.vidyapractice.shop </app/db/master-data.js
  
 - name: run systems_service
   ansible.builtin.include_role:
     name: common
-    tasks_from: systemd_setup.yaml
+    tasks_from: systemd_setup
