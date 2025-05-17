@@ -33,4 +33,4 @@
 - name: run systems_service
   ansible.builtin.include_role:
     name: common
-    tasks_from: systemd_setup.yaml
+    tasks_from: systemd_setup
