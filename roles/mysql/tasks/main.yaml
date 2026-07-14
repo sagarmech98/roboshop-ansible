@@ -1,30 +1,30 @@
-# - name: Install MySQL Server
-#   ansible.builtin.dnf:
-#     name: mysql-server
-#     state: latest
-
-# - name: Start MySQL
-#   ansible.builtin.systemd_service:
-#     name: mysqld
-#     state: started
-#     enabled: yes
-
-# - name: Setup MySQL Root Password
-#   ansible.builtin.shell: mysql_secure_installation --set-root-pass {{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:password token={{ token }} url=http://vault-int.vidyapractice.online:8200') }}
-
-
-
-
-  - name: Install MySQL Server
+- name: Install MySQL Server
   ansible.builtin.dnf:
-    name: mariadb-server
+    name: mysql-server
     state: latest
 
 - name: Start MySQL
   ansible.builtin.systemd_service:
-    name: mariadb
+    name: mysqld
     state: started
     enabled: yes
 
 - name: Setup MySQL Root Password
   ansible.builtin.shell: mysql_secure_installation --set-root-pass {{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:password token={{ token }} url=http://vault-int.vidyapractice.online:8200') }}
+
+
+
+
+#   - name: Install MySQL Server
+#   ansible.builtin.dnf:
+#     name: mariadb-server
+#     state: latest
+
+# - name: Start MySQL
+#   ansible.builtin.systemd_service:
+#     name: mariadb
+#     state: started
+#     enabled: yes
+
+# - name: Setup MySQL Root Password
+#   ansible.builtin.shell: mysql_secure_installation --set-root-pass {{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:password token={{ token }} url=http://vault-int.vidyapractice.online:8200') }}
