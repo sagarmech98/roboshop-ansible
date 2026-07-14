@@ -23,8 +23,3 @@
     name: redis
     state: started
     enabled: yes
-
-- name: Install Redis
-  ansible.builtin.dnf:
-    name: redis
-    state: present
