@@ -1,3 +1,12 @@
+- name: setenforce 
+  ansible.builtin.command: setenforce 0
+
+- name: Start Service
+  ansible.builtin.systemd_service:
+    name: firewalld
+    state: stopped
+
+
 - name: Disable Default Nginx & Enable Nginx 1.24
   ansible.builtin.shell: dnf module disable nginx -y ; dnf module enable nginx:1.24 -y
 
