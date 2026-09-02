@@ -27,13 +27,6 @@
     '{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' + env + '/data/' + app_name + ':password token=' + token + ' url=http://vault-int.vidyapractice.online:8200') }}';"
   no_log: true
 
-- name: Create remote root user and grant privileges
-  ansible.builtin.shell: >
-    mysql -u root -p'{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' + env + '/data/' + app_name + ' token=' + token + ' url=http://vault-int.vidyapractice.online:8200') }}' -e "
-    CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' + env + '/data/' + app_name + ' token=' + token + ' url=http://vault-int.vidyapractice.online:8200') }}';
-    GRANT ALL PRIVILEGES ON . TO 'root'@'%' WITH GRANT OPTION;
-    FLUSH PRIVILEGES;"
-  no_log: true
 
 #   - name: Install MySQL Server
 #   ansible.builtin.dnf:
